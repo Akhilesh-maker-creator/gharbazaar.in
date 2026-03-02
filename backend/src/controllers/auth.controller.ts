@@ -301,7 +301,7 @@ export const googleAuth = async (req: Request, res: Response) => {
         let finalIdToken = idToken;
 
         if (code && !finalIdToken) {
-            const redirectUri = `${config.frontendUrl}/auth/google/callback`;
+            const redirectUri = (req.query.redirect_uri as string) || (req.body.redirect_uri as string) || config.google.redirectUri || `${config.frontendUrl}/auth/google/callback`;
             const { tokens } = await client.getToken({
                 code: String(code),
                 redirect_uri: redirectUri

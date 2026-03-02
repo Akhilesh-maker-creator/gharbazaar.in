@@ -84,7 +84,7 @@ const config: Config = {
     jwtExpiresIn: process.env.JWT_EXPIRES_IN || '7d',
     databaseUrl: process.env.DATABASE_URL || 'postgresql://localhost:5432/gharbazaar',
     mongodbUri: process.env.MONGODB_URI || '',
-    frontendUrl: process.env.FRONTEND_URL || 'http://localhost:3000',
+    frontendUrl: (process.env.FRONTEND_URL || 'http://localhost:3000').split(',')[0].trim(),
     appName: process.env.APP_NAME || 'GharBazaar',
     google: {
         clientId: process.env.GOOGLE_CLIENT_ID || '',
